@@ -6,8 +6,11 @@ from YuiHirasawaMusicBot.config import SOURCE_CODE,ASSISTANT_NAME,PROJECT_NAME,S
 logging.basicConfig(level=logging.INFO)
 
 @Client.on_message(filters.private & filters.incoming & filters.command(['start']))
-def _start(client, message):
-    client.send_message(message.chat.id,
+async def _start(client, message):
+    await client.send_sticker(message.chat.id,
+        sticker="CAACAgQAAxkDAAEBodFhE8O-fwL_pG8gicOA_qvwrn9FcQACDwkAAkcmuVHk6q8z3OUzHx4E"
+        )
+    await client.send_message(message.chat.id,
         text=tr.START_MSG.format(message.from_user.first_name, message.from_user.id),
         parse_mode="markdown",
         reply_markup=InlineKeyboardMarkup(
